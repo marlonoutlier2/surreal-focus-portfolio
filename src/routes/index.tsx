@@ -84,27 +84,45 @@ function Index() {
         </motion.p>
       </section>
 
-      {/* PORTRAIT — blended into background */}
+      {/* PORTRAIT — full image, circular, blended halo */}
       <section className="relative z-10 mx-auto max-w-md px-6 pb-12 text-center">
         <motion.div
           initial={{ opacity: 0, scale: 1.04 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 1.6, ease: [0.22, 1, 0.36, 1] }}
-          className="relative mx-auto h-56 w-56 sm:h-64 sm:w-64"
+          className="relative mx-auto h-44 w-44 sm:h-52 sm:w-52"
         >
-          <img
-            src={portrait}
-            alt="Marlon Ferreira"
-            className="h-full w-full object-cover grayscale-[0.15]"
+          {/* Outer ember halo — fades into background */}
+          <div
+            aria-hidden
+            className="absolute -inset-10 rounded-full"
             style={{
-              filter: "contrast(1.05) saturate(1.05)",
-              WebkitMaskImage:
-                "radial-gradient(circle at 50% 45%, black 38%, transparent 72%)",
-              maskImage:
-                "radial-gradient(circle at 50% 45%, black 38%, transparent 72%)",
+              background:
+                "radial-gradient(circle, oklch(0.55 0.24 30 / 0.45) 0%, oklch(0.55 0.24 30 / 0.15) 35%, transparent 70%)",
+              filter: "blur(8px)",
             }}
           />
+          {/* Thin ember ring */}
+          <div
+            aria-hidden
+            className="absolute inset-[-3px] rounded-full"
+            style={{
+              background:
+                "conic-gradient(from 140deg, oklch(0.62 0.24 32) 0%, oklch(0.72 0.21 45) 25%, oklch(0.35 0.15 28) 55%, oklch(0.62 0.24 32) 100%)",
+              opacity: 0.85,
+            }}
+          />
+          {/* Inner bezel */}
+          <div className="absolute inset-0 rounded-full p-[2px] bg-background">
+            <img
+              src={portrait}
+              alt="Marlon Ferreira"
+              className="h-full w-full rounded-full object-cover"
+              style={{ filter: "contrast(1.06) saturate(1.08)" }}
+            />
+          </div>
         </motion.div>
+
 
         {/* BIO */}
         <motion.div
