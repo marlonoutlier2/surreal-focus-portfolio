@@ -22,10 +22,11 @@ function VerifiedMark() {
     <svg
       viewBox="0 0 24 24"
       aria-label="verificado"
-      className="inline-block h-[0.72em] w-[0.72em] translate-y-[-0.05em] text-bone"
+      className="inline-block h-[0.78em] w-[0.78em] translate-y-[-0.04em] ml-1 text-bone"
       fill="currentColor"
     >
-      <path d="M12 1.6l2.4 2.1 3.2-.3.6 3.1 2.7 1.7-1.3 2.9 1.3 2.9-2.7 1.7-.6 3.1-3.2-.3L12 22.4l-2.4-2.1-3.2.3-.6-3.1-2.7-1.7 1.3-2.9-1.3-2.9 2.7-1.7.6-3.1 3.2.3L12 1.6zm-1.2 13.2l6-6-1.3-1.3-4.7 4.7-2.1-2.1-1.3 1.3 3.4 3.4z" />
+      {/* Scalloped Instagram-style badge */}
+      <path d="M23 12l-2.18-2.51.3-3.32-3.25-.74L15.87 2.6 12.86 4.03 12 4l-.86-.03L8.13 2.6 6.43 5.43l-3.25.74.3 3.32L1 12l2.18 2.51-.3 3.33 3.25.74 1.7 2.83 3.01-1.43.86.03.86-.03 3.01 1.43 1.7-2.83 3.25-.74-.3-3.33L23 12zm-12.91 4.72l-3.8-3.81 1.48-1.48 2.32 2.33 5.85-5.87 1.48 1.48-7.33 7.35z" />
     </svg>
   );
 }
@@ -83,27 +84,45 @@ function Index() {
         </motion.p>
       </section>
 
-      {/* PORTRAIT — blended into background */}
+      {/* PORTRAIT — full image, circular, blended halo */}
       <section className="relative z-10 mx-auto max-w-md px-6 pb-12 text-center">
         <motion.div
           initial={{ opacity: 0, scale: 1.04 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 1.6, ease: [0.22, 1, 0.36, 1] }}
-          className="relative mx-auto h-56 w-56 sm:h-64 sm:w-64"
+          className="relative mx-auto h-44 w-44 sm:h-52 sm:w-52"
         >
-          <img
-            src={portrait}
-            alt="Marlon Ferreira"
-            className="h-full w-full object-cover grayscale-[0.15]"
+          {/* Outer ember halo — fades into background */}
+          <div
+            aria-hidden
+            className="absolute -inset-10 rounded-full"
             style={{
-              filter: "contrast(1.05) saturate(1.05)",
-              WebkitMaskImage:
-                "radial-gradient(circle at 50% 45%, black 38%, transparent 72%)",
-              maskImage:
-                "radial-gradient(circle at 50% 45%, black 38%, transparent 72%)",
+              background:
+                "radial-gradient(circle, oklch(0.55 0.24 30 / 0.45) 0%, oklch(0.55 0.24 30 / 0.15) 35%, transparent 70%)",
+              filter: "blur(8px)",
             }}
           />
+          {/* Thin ember ring */}
+          <div
+            aria-hidden
+            className="absolute inset-[-3px] rounded-full"
+            style={{
+              background:
+                "conic-gradient(from 140deg, oklch(0.62 0.24 32) 0%, oklch(0.72 0.21 45) 25%, oklch(0.35 0.15 28) 55%, oklch(0.62 0.24 32) 100%)",
+              opacity: 0.85,
+            }}
+          />
+          {/* Inner bezel */}
+          <div className="absolute inset-0 rounded-full p-[2px] bg-background">
+            <img
+              src={portrait}
+              alt="Marlon Ferreira"
+              className="h-full w-full rounded-full object-cover"
+              style={{ filter: "contrast(1.06) saturate(1.08)" }}
+            />
+          </div>
         </motion.div>
+
 
         {/* BIO */}
         <motion.div
