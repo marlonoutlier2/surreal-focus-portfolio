@@ -8,9 +8,9 @@ export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
       { title: "Marlon Ferreira | Direct Response" },
-      { name: "description", content: "Bem-vindo ao portfólio de Marlon Ferreira — Estrategista digital e especialista em Direct Response." },
+      { name: "description", content: "Estrategista digital e especialista em Direct Response. Três direções para quem chegou pela bio." },
       { property: "og:title", content: "Marlon Ferreira | Direct Response" },
-      { property: "og:description", content: "Três direções para quem chegou pela bio." },
+      { property: "og:description", content: "Três direções. Uma decisão." },
       { property: "og:type", content: "website" },
     ],
   }),
@@ -22,10 +22,9 @@ function VerifiedMark() {
     <svg
       viewBox="0 0 24 24"
       aria-label="verificado"
-      className="inline-block h-[0.78em] w-[0.78em] translate-y-[-0.04em] ml-1 text-bone"
+      className="inline-block h-[0.78em] w-[0.78em] translate-y-[-0.04em] ml-1.5 text-bone"
       fill="currentColor"
     >
-      {/* Scalloped Instagram-style badge */}
       <path d="M23 12l-2.18-2.51.3-3.32-3.25-.74L15.87 2.6 12.86 4.03 12 4l-.86-.03L8.13 2.6 6.43 5.43l-3.25.74.3 3.32L1 12l2.18 2.51-.3 3.33 3.25.74 1.7 2.83 3.01-1.43.86.03.86-.03 3.01 1.43 1.7-2.83 3.25-.74-.3-3.33L23 12zm-12.91 4.72l-3.8-3.81 1.48-1.48 2.32 2.33 5.85-5.87 1.48 1.48-7.33 7.35z" />
     </svg>
   );
@@ -34,120 +33,126 @@ function VerifiedMark() {
 function Index() {
   return (
     <main className="relative min-h-screen bg-background text-foreground overflow-hidden">
-      {/* Ambient ember backdrop */}
+      {/* Subtle layered backdrop */}
       <div
         aria-hidden
         className="pointer-events-none fixed inset-0 z-0"
         style={{ background: "var(--gradient-ember)" }}
       />
 
-      {/* NAME / TITLE — TOP */}
-      <header className="relative z-30 mx-auto max-w-4xl px-6 pt-16 pb-10 text-center sm:pt-24">
+      {/* TOP NAME BAR */}
+      <header className="relative z-30 mx-auto max-w-5xl px-6 pt-14 pb-6 text-center sm:pt-20">
         <motion.h1
-          initial={{ opacity: 0, y: -10 }}
+          initial={{ opacity: 0, y: -8 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1 }}
-          className="font-display text-2xl sm:text-3xl tracking-tight text-bone"
+          transition={{ duration: 0.9 }}
+          className="font-display text-xl sm:text-2xl tracking-tight text-bone"
         >
-          Marlon Ferreira <span className="text-muted-foreground font-light">|</span> Direct Response <VerifiedMark />
+          Marlon Ferreira{" "}
+          <span className="text-muted-foreground font-light mx-1">|</span>{" "}
+          Direct Response
+          <VerifiedMark />
         </motion.h1>
+        <motion.div
+          initial={{ scaleX: 0 }}
+          animate={{ scaleX: 1 }}
+          transition={{ duration: 1.2, delay: 0.3 }}
+          className="mx-auto mt-5 h-px w-16 bg-ember/70 origin-center"
+        />
       </header>
 
-      {/* WELCOME */}
-      <section className="relative z-10 mx-auto max-w-3xl px-6 pb-20 text-center">
+      {/* WELCOME / HERO */}
+      <section className="relative z-10 mx-auto max-w-3xl px-6 pb-16 pt-6 text-center">
         <motion.span
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 1, delay: 0.2 }}
-          className="text-[11px] uppercase tracking-[0.4em] text-ember"
+          className="text-[10px] uppercase tracking-[0.45em] text-muted-foreground"
         >
-          ◇ Bem-vindo
+          Portfólio · 2026
         </motion.span>
 
         <motion.h2
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 18 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1.1, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
-          className="mt-6 font-display text-5xl sm:text-6xl lg:text-7xl leading-[0.95] tracking-[-0.03em] text-bone text-balance"
+          transition={{ duration: 1.1, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
+          className="mt-6 font-display text-5xl sm:text-6xl lg:text-7xl leading-[0.95] tracking-[-0.035em] text-bone text-balance font-300"
         >
-          É bom te ver <em className="not-italic italic text-ember">por aqui.</em>
+          Você chegou no
+          <br />
+          <em className="not-italic italic text-bone">lugar certo.</em>
         </motion.h2>
 
         <motion.p
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.4 }}
-          className="mt-8 text-base sm:text-lg leading-relaxed text-muted-foreground max-w-xl mx-auto"
+          className="mt-7 text-base sm:text-lg leading-relaxed text-muted-foreground max-w-xl mx-auto"
         >
-          Este é o ponto onde a curiosidade vira direção.
-          Escolha por onde quer começar — eu te acompanho do outro lado.
+          Aqui não tem ruído. Tem direção.
+          Escolha por onde quer seguir — eu te encontro do outro lado.
         </motion.p>
       </section>
 
-      {/* PORTRAIT — full image, circular, blended halo */}
-      <section className="relative z-10 mx-auto max-w-md px-6 pb-12 text-center">
+      {/* PORTRAIT — disruptive editorial frame */}
+      <section className="relative z-10 mx-auto max-w-5xl px-6 pb-20">
         <motion.div
-          initial={{ opacity: 0, scale: 1.04 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 1.6, ease: [0.22, 1, 0.36, 1] }}
-          className="relative mx-auto h-44 w-44 sm:h-52 sm:w-52"
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1.4, ease: [0.22, 1, 0.36, 1] }}
+          className="relative mx-auto w-full max-w-[420px]"
         >
-          {/* Outer ember halo — fades into background */}
-          <div
-            aria-hidden
-            className="absolute -inset-10 rounded-full"
-            style={{
-              background:
-                "radial-gradient(circle, oklch(0.55 0.24 30 / 0.45) 0%, oklch(0.55 0.24 30 / 0.15) 35%, transparent 70%)",
-              filter: "blur(8px)",
-            }}
-          />
-          {/* Thin ember ring */}
-          <div
-            aria-hidden
-            className="absolute inset-[-3px] rounded-full"
-            style={{
-              background:
-                "conic-gradient(from 140deg, oklch(0.62 0.24 32) 0%, oklch(0.72 0.21 45) 25%, oklch(0.35 0.15 28) 55%, oklch(0.62 0.24 32) 100%)",
-              opacity: 0.85,
-            }}
-          />
-          {/* Inner bezel */}
-          <div className="absolute inset-0 rounded-full p-[2px] bg-background">
+          {/* Serial labels — editorial */}
+          <div className="absolute -left-2 top-0 -translate-y-6 text-[10px] uppercase tracking-[0.4em] text-muted-foreground hidden sm:block">
+            N° 001
+          </div>
+          <div className="absolute -right-2 bottom-2 translate-y-6 text-[10px] uppercase tracking-[0.4em] text-ember hidden sm:block">
+            // Direct Response
+          </div>
+
+          {/* Portrait container — tall, edges fade into bg */}
+          <div className="relative aspect-[4/5] w-full overflow-hidden">
             <img
               src={portrait}
               alt="Marlon Ferreira"
-              className="h-full w-full rounded-full object-cover"
-              style={{ filter: "contrast(1.06) saturate(1.08)" }}
+              className="h-full w-full object-cover"
+              style={{
+                filter: "contrast(1.08) saturate(0.85) brightness(0.95)",
+                WebkitMaskImage:
+                  "linear-gradient(180deg, transparent 0%, black 18%, black 78%, transparent 100%)",
+                maskImage:
+                  "linear-gradient(180deg, transparent 0%, black 18%, black 78%, transparent 100%)",
+              }}
+            />
+            {/* subtle red tint vignette */}
+            <div
+              aria-hidden
+              className="pointer-events-none absolute inset-0"
+              style={{
+                background:
+                  "radial-gradient(ellipse at 50% 100%, oklch(0.30 0.18 25 / 0.35) 0%, transparent 60%)",
+                mixBlendMode: "multiply",
+              }}
             />
           </div>
+
+          {/* Caption bar */}
+          <div className="mt-4 flex items-center justify-between text-[10px] uppercase tracking-[0.3em] text-muted-foreground">
+            <span>Marlon Ferreira</span>
+            <span className="h-px flex-1 mx-4 bg-border" />
+            <span className="text-ember">SC · BR</span>
+          </div>
         </motion.div>
+      </section>
 
-
-        {/* BIO */}
-        <motion.div
-          initial={{ opacity: 0, y: 16 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 1 }}
-          className="-mt-4 max-w-md mx-auto"
-        >
-          <p className="text-sm sm:text-base text-bone/90 leading-relaxed">
-            Estrategista digital · Direct Response.
-            <br />
-            <span className="text-muted-foreground">
-              Construo respostas para quem decide agir.
-            </span>
-          </p>
-        </motion.div>
-
-        {/* ENCOURAGEMENT */}
+      {/* ENCOURAGEMENT */}
+      <section className="relative z-10 mx-auto max-w-2xl px-6 pb-32 text-center">
         <motion.p
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
-          transition={{ duration: 1.2, delay: 0.2 }}
-          className="mt-10 font-display italic text-xl sm:text-2xl text-bone/90 text-balance"
+          transition={{ duration: 1.2 }}
+          className="font-display italic text-2xl sm:text-3xl text-bone/90 leading-snug text-balance"
         >
           "Você não chegou aqui por acaso.
           <br />
@@ -155,18 +160,18 @@ function Index() {
         </motion.p>
       </section>
 
-      {/* DIRECTIONS */}
-      <section className="relative z-10 mx-auto max-w-6xl px-6 pb-32 pt-20 sm:px-10">
-        <div className="mb-14 text-center">
-          <span className="text-[11px] uppercase tracking-[0.4em] text-ember">
-            — Direcionamentos
+      {/* DIRECTIONS — primary CTAs */}
+      <section className="relative z-10 mx-auto max-w-6xl px-6 pb-40 sm:px-10">
+        <div className="mb-12 text-center">
+          <span className="text-[10px] uppercase tracking-[0.45em] text-ember">
+            Próximo passo
           </span>
           <h3 className="mt-4 font-display text-3xl sm:text-4xl leading-tight tracking-tight text-bone">
-            Por onde quer seguir?
+            Escolha sua direção.
           </h3>
         </div>
 
-        <div className="grid grid-cols-1 gap-5 md:grid-cols-3">
+        <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
           <DirectionCard
             index="01"
             eyebrow="Mentoria"
@@ -181,7 +186,7 @@ function Index() {
             title="Bastidores no Instagram"
             description="Movimentos crus, antes de virarem case. Cobertura diária de bastidor estratégico."
             href="https://instagram.com/marlonferreiratv"
-            delay={0.12}
+            delay={0.1}
           />
           <DirectionCard
             index="03"
@@ -189,14 +194,14 @@ function Index() {
             title="Conversa no WhatsApp"
             description="Para quem já decidiu. Briefing rápido e resposta em até 12h."
             href="https://wa.me/5500000000000"
-            delay={0.24}
+            delay={0.2}
           />
         </div>
       </section>
 
       <FocusScrollOverlay />
 
-      <footer className="relative z-10 border-t border-border/40 py-8 text-center text-[10px] uppercase tracking-[0.3em] text-muted-foreground">
+      <footer className="relative z-10 border-t border-border/40 py-7 text-center text-[10px] uppercase tracking-[0.35em] text-muted-foreground">
         © 2026 Marlon Ferreira · Direct Response
       </footer>
     </main>
